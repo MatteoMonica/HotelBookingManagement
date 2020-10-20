@@ -19,9 +19,7 @@ class AuthController extends Controller
     {
         $credentials = $request->all();
 
-        var_dump($credentials);
-
-        if (Auth::attempt(['username' => $credentials['username'], 'password' => bcrypt($credentials['password'])])) {
+        if (Auth::attempt(['username' => $credentials['username'], 'password' => $credentials['password']])) {
             return true;
         } else {
             return false;

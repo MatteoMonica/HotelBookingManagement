@@ -26,8 +26,15 @@ class ReservationViewController extends Controller
         $requestParams = $request->all();
         session(['generalReservationItems' => $requestParams]);
 
+        return redirect('/reservation/rooms');
+    }
+
+    public function showRooms()
+    {
+        $oldRequestParams = session('generalReservationItems');
+
         $roomController = new RoomController();
-        $availableRooms = $roomController->indexAvailableRooms($requestParams['checkin'], $requestParams['checkout']);
+        $availableRooms = $roomController->indexAvailableRooms($oldRequestParams['checkin'], $oldRequestParams['checkout']);
 
         return view('pages.reservations.rooms', [ 'availableRooms' => $availableRooms, 'selectedRooms' => [] ]);
     }
@@ -55,11 +62,16 @@ class ReservationViewController extends Controller
             session(['chosenRooms' => json_encode($arr)]);
         }
 
-        if(isset($requestParams['chosenRoom']) || isset($requestParams['removeRoom'])) {
+        if(isset($requestParams['chosenRoom']) || isset($requestParams['removeRoom']) || count($arr) <= 0) {
             return view('pages.reservations.rooms', [ 'availableRooms' => $availableRooms, 'selectedRooms' => $arr ]);
         } else {
-            return view('pages.reservations.customers', [ 'percentage' => 0 ]);
+            return redirect('reservation/customers');
         }
+    }
+
+    public function showCustomers()
+    {
+        return view('pages.reservations.customers', [ 'percentage' => 0 ]);
     }
 
     public function processCustomers(Request $request)
@@ -82,7 +94,7 @@ class ReservationViewController extends Controller
                 $userPassword = Str::random(10);
 
                 $this->insertReservation($userPassword);
-                return view('pages.reservations.completion', [ 'username' => $sessionParams['emailAddress'], 'password' => $userPassword ]);
+                return redirect('reservation/completion');
             }
         }
     }
@@ -101,7 +113,7 @@ class ReservationViewController extends Controller
         $customersInfo = json_decode(session('customersReservation'), true);
 
         /// Creation user login
-        if($reservationInfo['createcustomerarea'] == "checked") {
+        if(isset($reservationInfo['createcustomerarea']) && $reservationInfo['createcustomerarea'] == "checked") {
             $loginCount = $loginController->store([
                 'username' => $reservationInfo['emailAddress'],
                 'password' => bcrypt($userPassword),
@@ -109,6 +121,10 @@ class ReservationViewController extends Controller
             ]);
 
             $reservationInfo['login'] = $loginCount->idlogin;
+
+            $arr = ['username' => $reservationInfo['emailAddress'], 'password' => $userPassword ];
+
+            session([ 'userDetailDashboard' => json_encode($arr) ]);
         }
 
         /// Creation reservation
@@ -130,5 +146,17 @@ class ReservationViewController extends Controller
                 $customerController->store($customersInfo[$i]);
             }
         }
+    }
+
+    public function showCompletion()
+    {
+        $sessionParams = json_decode(session('userDetailDashboard'), true);
+
+        session()->flush();
+
+        if(isset($sessionParams['username']) && isset($sessionParams['password']))
+            return view('pages.reservations.completion', [ 'username' => $sessionParams['username'], 'password' => $sessionParams['password'] ]);
+        else
+            return view('pages.reservations.completion');
     }
 }

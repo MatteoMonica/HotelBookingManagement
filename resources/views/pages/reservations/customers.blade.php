@@ -28,15 +28,15 @@
 
                         <div class="form-group">
                             <label for="customername">Name</label>
-                            <input type="text" class="form-control" name="customername" id="customername">
+                            <input type="text" class="form-control" name="customername" id="customername" required>
                         </div>
                         <div class="form-group">
                             <label for="customersurname">Surname</label>
-                            <input type="text" class="form-control" name="customersurname" id="customersurname">
+                            <input type="text" class="form-control" name="customersurname" id="customersurname" required>
                         </div>
                         <div class="form-group">
                             <label for="customergender">Gender</label>
-                            <select class="form-control" name="customergender" id="customergender">
+                            <select class="form-control" name="customergender" id="customergender" required>
                                 <option value="M">Male</option>
                                 <option value="F">Female</option>
                                 <option value="O">Other</option>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="customerbirthdate">Birthdate</label>
-                            <input class="form-control" id="customerbirthdate" name="customerbirthdate" placeholder="DD/MM/YYYY" type="text"/>
+                            <input class="form-control" id="customerbirthdate" name="customerbirthdate" placeholder="DD/MM/YYYY" type="text" required/>
                             <script>
                                 $(document).ready(function(){
                                     var date_input = $('input[name="customerbirthdate"]');

@@ -24,7 +24,7 @@
 
                         <div class="form-group">
                             <label class="control-label" for="date">Check-in Date</label>
-                            <input class="form-control" id="date" name="checkin" placeholder="MM/DD/YYYY" type="text"/>
+                            <input class="form-control" id="date" name="checkin" placeholder="MM/DD/YYYY" type="text" required/>
                             <script>
                                 $(document).ready(function(){
                                     var date_input = $('input[name="checkin"]');
@@ -41,7 +41,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="date">Check-out Date</label>
-                            <input class="form-control" id="date" name="checkout" placeholder="MM/DD/YYYY" type="text"/>
+                            <input class="form-control" id="date" name="checkout" placeholder="MM/DD/YYYY" type="text" required/>
                             <script>
                                 $(document).ready(function(){
                                     var date_input = $('input[name="checkout"]');
@@ -58,11 +58,11 @@
                         </div>
                         <div class="form-group">
                             <label for="emailAddress">Email address</label>
-                            <input type="email" class="form-control" name="emailAddress" id="emailAddress">
+                            <input type="email" class="form-control" name="emailAddress" id="emailAddress" required>
                         </div>
                         <div class="form-group">
                             <label for="treatment">Treatment</label>
-                            <select class="form-control" name="treatment" id="treatment">
+                            <select class="form-control" name="treatment" id="treatment" required>
                                 @foreach ($treatments as $item)
                                     <option value="{{$item->idtreatment}}">{{$item->descriptiontreatment}}</option>
                                 @endforeach
@@ -70,7 +70,7 @@
                         </div>
                         <div class="form-group">
                             <label for="adults">Number of adults (above 16 years old)</label>
-                            <select class="form-control" name="adults" id="adults">
+                            <select class="form-control" name="adults" id="adults" required>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -79,7 +79,7 @@
                         </div>
                         <div class="form-group">
                             <label for="children">Number of children (8 to 16 years old)</label>
-                            <select class="form-control" name="children" id="children">
+                            <select class="form-control" name="children" id="children" required>
                                 <option>0</option>
                                 <option>1</option>
                                 <option>2</option>
@@ -89,7 +89,7 @@
                         </div>
                         <div class="form-group">
                             <label for="newborns">Number of newborns</label>
-                            <select class="form-control" name="newborns" id="newborns">
+                            <select class="form-control" name="newborns" id="newborns" required>
                                 <option>0</option>
                                 <option>1</option>
                                 <option>2</option>
@@ -104,7 +104,7 @@
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="checked" name="gdpr" id="gdpr">
+                            <input class="form-check-input" type="checkbox" value="checked" name="gdpr" id="gdpr" required>
                             <label class="form-check-label" for="gdpr">
                                 By continuing the procedure you accept our Terms of Service and our Privacy Policy
                             </label>

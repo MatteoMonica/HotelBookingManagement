@@ -1,6 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
+<table class="table table-dark">
     <section style="background-color: rgb(0, 0, 0);">
         <div style="padding-top: 93px; padding-bottom: 93px;">
             <div class="row">
@@ -18,23 +19,11 @@
             <div class="row">
                 <div class="col"></div>
                 <div class="col-6">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Check_green_icon.svg" />
+                    <form method="POST" action="">
+                        @csrf
 
-                    <br><br>
-
-                    Reservation requested succesfully.
-
-                    @if (isset($username) && isset($password))
-                        Personal area available <a href="/login">here</a> with the following credentials
-
-                        <br><br>
-
-                        Username: {{$username}}
-                        <br>
-                        Password: {{$password}}
-                    @endif
-
-                    <br><br>
+                        
+                    </form>
                 </div>
                 <div class="col"></div>
             </div>

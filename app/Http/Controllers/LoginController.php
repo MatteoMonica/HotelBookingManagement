@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Login;
 
 class LoginController extends Controller
 {
@@ -14,7 +14,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return User::where([ 'deleted_at' => NULL ])->get();
+        return Login::where([ 'deleted_at' => NULL ])->get();
     }
 
     /**
@@ -25,7 +25,7 @@ class LoginController extends Controller
      */
     public function show(int $idlogin)
     {
-        return User::where(['idlogin' => $idlogin, 'deleted_at' => NULL])->get();
+        return Login::where(['idlogin' => $idlogin, 'deleted_at' => NULL])->get();
     }
 
     /**
@@ -36,7 +36,7 @@ class LoginController extends Controller
      */
     public function store($body)
     {
-        return User::create($body);
+        return Login::create($body);
     }
 
     /**
@@ -48,7 +48,7 @@ class LoginController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $User = User::findOrFail($id);
+        $User = Login::findOrFail($id);
         $User->update($request->all());
 
         return $User;
@@ -62,7 +62,7 @@ class LoginController extends Controller
      */
     public function destroy(int $id)
     {
-        $User = User::findOrFail($id);
+        $User = Login::findOrFail($id);
         $User->delete();
 
         return 204;

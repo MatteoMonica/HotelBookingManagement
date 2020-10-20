@@ -15,6 +15,19 @@ class AdministrationViewController extends Controller
     public function processIndex(Request $request)
     {
         $authController = new AuthController();
-        var_dump($authController->authenticate($request));
+
+        if($authController->authenticate($request))
+            return redirect('/dashboard');
+        else
+            return redirect('/login');
+    }
+
+    public function showDashboard()
+    {
+        return view('pages.administration.dashboard');
+    }
+
+    public function processDashboard(Request $request)
+    {
     }
 }

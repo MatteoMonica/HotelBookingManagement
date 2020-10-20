@@ -15,7 +15,7 @@ class Login extends Migration
     {
         Schema::create('login', function (Blueprint $table) {
             $table->bigIncrements('idlogin');
-            $table->string('username', 255);
+            $table->string('username', 255)->unique();
             $table->string('password', 1000);
 
             $table->unsignedBigInteger('role');

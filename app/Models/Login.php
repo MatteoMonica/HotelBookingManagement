@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class Login extends Authenticatable
 {
-    use SoftDeletes;
+    use HasFactory, Notifiable;
+
     public $table = 'login';
     protected $primaryKey = 'idlogin';
 

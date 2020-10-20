@@ -16,8 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Views\ReservationViewController@showIndex');
 Route::post('/', 'Views\ReservationViewController@processIndex');
 
+Route::get('reservation/rooms', 'Views\ReservationViewController@showRooms');
 Route::post('reservation/rooms', 'Views\ReservationViewController@processRooms');
+
+Route::get('reservation/customers', 'Views\ReservationViewController@showCustomers');
 Route::post('reservation/customers', 'Views\ReservationViewController@processCustomers');
 
-Route::get('administration/login', 'Views\AdministrationViewController@showIndex');
-Route::post('administration/login', 'Views\AdministrationViewController@processIndex');
+Route::get('reservation/completion', 'Views\ReservationViewController@showCompletion');
+
+Route::get('login', 'Views\AdministrationViewController@showIndex');
+Route::post('login', 'Views\AdministrationViewController@processIndex');
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('dashboard', 'Views\AdministrationViewController@showDashboard');
+    Route::post('dashboard', 'Views\AdministrationViewController@processDashboard');
+});
