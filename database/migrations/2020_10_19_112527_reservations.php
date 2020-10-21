@@ -21,10 +21,10 @@ class Reservations extends Migration
             $table->string('contacts', 1000)->nullable();
 
             $table->unsignedBigInteger('treatment');
-            $table->foreign('treatment')->references('idtreatment')->on('treatments');
+            $table->foreign('treatment')->references('idtreatment')->on('treatments')->onDelete('cascade');
 
             $table->unsignedBigInteger('bookingstatus');
-            $table->foreign('bookingstatus')->references('idstatusreservation')->on('statusreservation');
+            $table->foreign('bookingstatus')->references('idstatusreservation')->on('statusreservation')->onDelete('cascade');
 
             $table->integer('adultsnumber')->default(0);
             $table->integer('kidsnumber')->default(0);
@@ -35,7 +35,7 @@ class Reservations extends Migration
             $table->text('notes')->nullable();
 
             $table->unsignedBigInteger('login')->nullable();
-            $table->foreign('login')->references('idlogin')->on('login');
+            $table->foreign('login')->references('idlogin')->on('login')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes('deleted_at', 0);

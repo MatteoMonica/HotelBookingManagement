@@ -19,7 +19,7 @@ class Login extends Migration
             $table->string('password', 1000);
 
             $table->unsignedBigInteger('role');
-            $table->foreign('role')->references('idrole')->on('roles');
+            $table->foreign('role')->references('idrole')->on('roles')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes('deleted_at', 0);

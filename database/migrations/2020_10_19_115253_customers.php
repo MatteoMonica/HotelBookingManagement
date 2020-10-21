@@ -31,7 +31,7 @@ class Customers extends Migration
             $table->string('customerdocumentprovinceofissue', 1000)->nullable();
 
             $table->unsignedBigInteger('reservation');
-            $table->foreign('reservation')->references('idreservation')->on('reservations');
+            $table->foreign('reservation')->references('idreservation')->on('reservations')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes('deleted_at', 0);

@@ -17,10 +17,10 @@ class Booking extends Migration
             $table->bigIncrements('idbooking');
 
             $table->unsignedBigInteger('reservation');
-            $table->foreign('reservation')->references('idreservation')->on('reservations');
+            $table->foreign('reservation')->references('idreservation')->on('reservations')->onDelete('cascade');
 
             $table->unsignedBigInteger('room');
-            $table->foreign('room')->references('idroom')->on('rooms');
+            $table->foreign('room')->references('idroom')->on('rooms')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes('deleted_at', 0);

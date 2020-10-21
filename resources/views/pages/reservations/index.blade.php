@@ -61,6 +61,10 @@
                             <input type="email" class="form-control" name="emailAddress" id="emailAddress" required>
                         </div>
                         <div class="form-group">
+                            <label for="note">Note</label>
+                            <textarea class="form-control" name="note" id="note" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
                             <label for="treatment">Treatment</label>
                             <select class="form-control" name="treatment" id="treatment" required>
                                 @foreach ($treatments as $item)

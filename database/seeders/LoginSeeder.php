@@ -18,7 +18,7 @@ class LoginSeeder extends Seeder
     {
         DB::table('login')->insert([
             'username' => 'admin@admin.it',
-            'password' => '1234',
+            'password' => '$2b$10$RSQOIN3PLGFkt2eC7TFYtejjN0SrvArm6nd/6frrlWiu8SpzNXbDG',
             'role' => 1
         ]);
     }

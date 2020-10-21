@@ -17,10 +17,10 @@ class Accomodate extends Migration
             $table->bigIncrements('idaccomodate');
 
             $table->unsignedBigInteger('customer');
-            $table->foreign('customer')->references('idcustomer')->on('customers');
+            $table->foreign('customer')->references('idcustomer')->on('customers')->onDelete('cascade');
 
             $table->unsignedBigInteger('room');
-            $table->foreign('room')->references('idroom')->on('rooms');
+            $table->foreign('room')->references('idroom')->on('rooms')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes('deleted_at', 0);

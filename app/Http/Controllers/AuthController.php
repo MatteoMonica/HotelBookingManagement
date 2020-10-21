@@ -25,4 +25,14 @@ class AuthController extends Controller
             return false;
         }
     }
+
+    public function getUser()
+    {
+        return Auth::user();
+    }
+
+    public function getIDUser()
+    {
+        return Auth::id();
+    }
 }

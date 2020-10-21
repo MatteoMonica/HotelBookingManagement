@@ -108,6 +108,8 @@ class ReservationViewController extends Controller
 
         $reservationInfo = session('generalReservationItems');
         $reservationInfo['bookingstatus'] = 1;
+        $reservationInfo['contacts'] = $reservationInfo['emailAddress'];
+        $reservationInfo['notes'] = $reservationInfo['note'];
 
         $roomsInfo = json_decode(session('chosenRooms'), true);
         $customersInfo = json_decode(session('customersReservation'), true);
