@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Views;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LoginController;
@@ -35,10 +36,10 @@ class AdministrationViewController extends Controller
 
         if($user[0]['role'] == 1) {
             $reservations = $reservationController->index();
-            return view('pages.administration.dashboard', [ 'reservations' => $reservations, 'customers' => [] ]);
+            return view('pages.administration.dashboard', [ 'reservations' => $reservations ]);
         } else {
             $reservations = $reservationController->indexNonAdmin($authController->getIDUser());
-            return view('pages.administration.dashboard', [ 'reservations' => $reservations, 'customers' => [] ]);
+            return view('pages.administration.dashboard', [ 'reservations' => $reservations ]);
         }
     }
 
@@ -50,18 +51,20 @@ class AdministrationViewController extends Controller
             $customerController = new CustomerController();
             $loginController = new LoginController();
             $reservationController = new ReservationController();
+            $bookingController = new BookingController();
             $authController = new AuthController();
 
             $customers = $customerController->showByReservation($requestParams['reservationID']);
+            $rooms = $bookingController->showByReservation($requestParams['reservationID']);
 
             $user = $loginController->show($authController->getIDUser());
 
             if($user[0]['role'] == 1) {
                 $reservations = $reservationController->index();
-                return view('pages.administration.dashboard', [ 'reservations' => $reservations, 'customers' => $customers ]);
+                return view('pages.administration.dashboard', [ 'reservations' => $reservations, 'customers' => $customers, 'rooms' => $rooms ]);
             } else {
                 $reservations = $reservationController->indexNonAdmin($authController->getIDUser());
-                return view('pages.administration.dashboard', [ 'reservations' => $reservations, 'customers' => $customers ]);
+                return view('pages.administration.dashboard', [ 'reservations' => $reservations, 'customers' => $customers, 'rooms' => $rooms ]);
             }
         }
     }
