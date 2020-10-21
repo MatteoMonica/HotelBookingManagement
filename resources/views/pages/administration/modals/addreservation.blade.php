@@ -9,10 +9,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="/reservation/add" method="POST">
+                    <form action="/dashboard" method="POST">
+                        @csrf
+
                         <div class="form-group">
                             <label for="add_chkin2">Check-in</label>
-                                <input class="form-control" onkeypress="return false;" id="add_chkin" name="checkin" placeholder="Check-in" type="text"/>
+                                <input class="form-control" onkeypress="return false;" id="add_chkin" name="checkin" placeholder="Check-in" type="text" required/>
                             <script>
                                 $(document).ready(function(){
                                     var date_input=$('input[name="checkin"]'); //our date input has the name "date"
@@ -30,7 +32,7 @@
 
                         <div class="form-group">
                             <label for="add_chkout2">Check-out</label>
-                            <input class="form-control" id="add_chkout" onkeypress="return false;" name="checkout" placeholder="Check-out" type="text"/>
+                            <input class="form-control" id="add_chkout" onkeypress="return false;" name="checkout" placeholder="Check-out" type="text" required/>
                             <script>
                                 $(document).ready(function(){
                                     var date_input=$('input[name="checkout"]'); //our date input has the name "date"
@@ -48,34 +50,56 @@
 
                         <div class="form-group">
                             <label for="treatment">Treatment</label>
-                            <select class="form-control" name="treatment" id="treatment" >
+                            <select class="form-control" name="treatment" id="treatment" required>
+                                @foreach ($treatments as $item)
+                                    <option value="{{$item->idtreatment}}">{{$item->descriptiontreatment}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="bookingstatus">Booking Status</label>
-                            <select class="form-control" name="bookingstatus" id="bookingstatus" >
+                            <select class="form-control" name="bookingstatus" id="bookingstatus" required>
+                                @foreach ($statusReservation as $item)
+                                    <option value="{{$item->idstatusreservation}}">{{$item->descriptionbookingstatus}}</option>
+                                @endforeach
                             </select>
                         </div>
-
                         <div class="form-group">
-                            <label for="add_rec2" class="col-form-label">Contacts:</label>
-                            <textarea class="form-control" name="contacts" id="add_rec"></textarea>
+                            <label for="add_rec2" class="col-form-label">Contacts</label>
+                            <textarea class="form-control" name="contacts" id="add_rec" required></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="add_NA2">Number of adults</label>
-                            <input type="text" name="adultsnumber" id="add_NA" placeholder="Adults Number" class="form-control"/>
+                            <label for="note">Note</label>
+                            <textarea class="form-control" name="notes" id="note" rows="3"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="add_NB2">Number of children</label>
-                            <input type="text" name="kidsnumber" id="add_NB" placeholder="Kids Number" class="form-control"/>
+                            <label for="adults">Number of adults (above 16 years old)</label>
+                            <select class="form-control" name="adultsnumber" id="adults" required>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="add_NN2">Number of babies</label>
-                            <input type="text" name="newbornnumber" id="add_NN" placeholder="Newborns Number" class="form-control"/>
+                            <label for="children">Number of children (8 to 16 years old)</label>
+                            <select class="form-control" name="kidsnumber" id="children" required>
+                                <option>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="add_log2" class="col-form-label">Note:</label>
-                            <textarea class="form-control" name="notes" id="add_log"></textarea>
+                            <label for="newborns">Number of newborns</label>
+                            <select class="form-control" name="newbornnumber" id="newborns" required>
+                                <option>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
                         </div>
                         <div class="card">
                             <div class="card-header">
@@ -91,10 +115,9 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary" name="addReservation" value="true">Save</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>

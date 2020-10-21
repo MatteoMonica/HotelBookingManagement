@@ -74,7 +74,7 @@
                         </div>
                         <div class="form-group">
                             <label for="adults">Number of adults (above 16 years old)</label>
-                            <select class="form-control" name="adults" id="adults" required>
+                            <select class="form-control" name="adultsnumber" id="adults" required>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -83,7 +83,7 @@
                         </div>
                         <div class="form-group">
                             <label for="children">Number of children (8 to 16 years old)</label>
-                            <select class="form-control" name="children" id="children" required>
+                            <select class="form-control" name="kidsnumber" id="children" required>
                                 <option>0</option>
                                 <option>1</option>
                                 <option>2</option>
@@ -93,7 +93,7 @@
                         </div>
                         <div class="form-group">
                             <label for="newborns">Number of newborns</label>
-                            <select class="form-control" name="newborns" id="newborns" required>
+                            <select class="form-control" name="newbornnumber" id="newborns" required>
                                 <option>0</option>
                                 <option>1</option>
                                 <option>2</option>

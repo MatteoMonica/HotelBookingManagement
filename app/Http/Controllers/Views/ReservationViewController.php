@@ -82,14 +82,14 @@ class ReservationViewController extends Controller
         $arr = session()->exists('customersReservation') ? session('customersReservation') : json_encode(array());
         $arr = json_decode($arr, true);
 
-        if(count($arr) < $sessionParams['adults']) {
+        if(count($arr) < $sessionParams['adultsnumber']) {
             if(isset($requestParams['customername'])) {
                 array_push($arr, $requestParams);
                 session(['customersReservation' => json_encode($arr)]);
             }
 
-            if(count($arr) < $sessionParams['adults'])
-                return view('pages.reservations.customers', [ 'percentage' => (count($arr) / $sessionParams['adults']) * 100 ]);
+            if(count($arr) < $sessionParams['adultsnumber'])
+                return view('pages.reservations.customers', [ 'percentage' => (count($arr) / $sessionParams['adultsnumber']) * 100 ]);
             else {
                 $userPassword = Str::random(10);
 
