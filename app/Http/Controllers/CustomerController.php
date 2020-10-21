@@ -29,6 +29,17 @@ class CustomerController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Aziende  $aziende
+     * @return \Illuminate\Http\Response
+     */
+    public function showByReservation(int $IDReservation)
+    {
+        return Customer::where(['reservation' => $IDReservation, 'deleted_at' => NULL])->get();
+    }
+
+    /**
      * Create a new resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
