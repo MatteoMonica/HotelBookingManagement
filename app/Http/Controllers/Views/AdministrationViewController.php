@@ -68,4 +68,13 @@ class AdministrationViewController extends Controller
             }
         }
     }
+
+    public function addReservation(Request $request)
+    {
+        $reservationController = new ReservationController();
+
+        $reservation = $reservationController->store($request->all());
+
+        $this->showIndex();
+    }
 }

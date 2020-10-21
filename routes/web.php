@@ -30,4 +30,6 @@ Route::post('login', 'Views\AdministrationViewController@processIndex');
 Route::group(['middleware' => 'auth'], function() {
     Route::get('dashboard', 'Views\AdministrationViewController@showDashboard');
     Route::post('dashboard', 'Views\AdministrationViewController@processDashboard');
+
+    Route::post('reservation/add', 'Views\AdministrationViewController@addReservation');
 });

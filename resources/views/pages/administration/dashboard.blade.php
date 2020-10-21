@@ -137,10 +137,10 @@
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>ID</th>
-                                            <th>Nome</th>
-                                            <th>Tipologia</th>
-                                            <th>Costo</th>
-                                            <th>Elimina</th>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Price</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
