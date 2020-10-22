@@ -32,4 +32,5 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('dashboard', 'Views\AdministrationViewController@processDashboard');
 
     Route::post('reservation/add', 'Views\AdministrationViewController@addReservation');
+    Route::get('customer', 'Views\AdministrationViewController@getCustomer');
 });

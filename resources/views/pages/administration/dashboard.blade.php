@@ -70,7 +70,7 @@
 
                         <div>
                             <div class = "float-right pull-right" style="padding-bottom: 30px">
-                                <button onclick="addResModal()" class="btn btn-info">Add Customer</button>
+                                <button type="button" onclick="$('#add_customer_modal').modal('show');" class="btn btn-info">Add Customer</button>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered">
@@ -113,8 +113,8 @@
                                                 <td>{{$item->customerdocumentplaceofissue}}</td>
                                                 <td>{{$item->customerdocumentcityofissue}}</td>
                                                 <td>{{$item->customerdocumentprovinceofissue}}</td>
-                                                <td><button type="button" value="{{$item->idreservation}}" class="btn btn-warning">Edit</button></td>
-                                                <td><button type="button" value="{{$item->idreservation}}" class="btn btn-danger">Delete</button></td>
+                                                <td><button type="button" onclick="updateCustomerLoadData({{$item->idcustomer}});" class="btn btn-warning">Edit</button></td>
+                                                <td><button type="submit" name="deleteCustomer" value="{{$item->idcustomer}}" class="btn btn-danger">Delete</button></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -164,5 +164,10 @@
     @endif
 
     @include('pages.administration.modals.addreservation')
-    @include('pages.administration.modals.updatereservation')
+
+    @if (isset($reservationDetail))
+        @include('pages.administration.modals.updatereservation')
+        @include('pages.administration.modals.addcustomer')
+        @include('pages.administration.modals.updatecustomer')
+    @endif
 @stop

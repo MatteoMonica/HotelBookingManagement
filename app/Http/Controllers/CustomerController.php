@@ -57,10 +57,10 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $Customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, int $id)
+    public function update($body, int $id)
     {
         $Customer = Customer::findOrFail($id);
-        $Customer->update($request->all());
+        $Customer->update($body);
 
         return $Customer;
     }
@@ -71,7 +71,7 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $Role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(int $id)
+    public function destroy($id)
     {
         $Customer = Customer::findOrFail($id);
         $Customer->delete();

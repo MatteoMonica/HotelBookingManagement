@@ -68,6 +68,18 @@ class AdministrationViewController extends Controller
         if(isset($requestParams['deleteReservation'])) {
             return $this->deleteReservation($requestParams['deleteReservation']);
         }
+
+        if(isset($requestParams['addCustomer'])) {
+            return $this->addCustomer($requestParams);
+        }
+
+        if(isset($requestParams['updateCustomer'])) {
+            return $this->updateCustomer($requestParams);
+        }
+
+        if(isset($requestParams['deleteCustomer'])) {
+            return $this->deleteCustomer($requestParams);
+        }
     }
 
     public function loadReservationDetails($requestParams)
@@ -126,6 +138,41 @@ class AdministrationViewController extends Controller
     {
         $reservationController = new ReservationController();
         $reservationController->destroy($requestParams);
+
+        return $this->showDashboard();
+    }
+
+    public function addCustomer($requestParams)
+    {
+        $customerController = new CustomerController();
+        $requestParams['reservation'] = $requestParams['addCustomer'];
+
+        $customerController->store($requestParams);
+
+        return $this->showDashboard();
+    }
+
+    public function getCustomer(Request $request)
+    {
+        $customerController = new CustomerController();
+
+        return json_encode($customerController->show($request->all()['idCustomer']));
+    }
+
+    public function updateCustomer($requestParams)
+    {
+        $customerController = new CustomerController();
+
+        $customerController->update($requestParams, $requestParams['updateCustomer']);
+
+        return $this->showDashboard();
+    }
+
+    public function deleteCustomer($requestParams)
+    {
+        $customerController = new CustomerController();
+
+        $customerController->destroy($requestParams['deleteCustomer']);
 
         return $this->showDashboard();
     }
