@@ -60,6 +60,14 @@ class AdministrationViewController extends Controller
         if(isset($requestParams['addReservation'])) {
             return $this->addReservation($requestParams);
         }
+
+        if(isset($requestParams['updateReservation'])) {
+            return $this->updateReservation($requestParams);
+        }
+
+        if(isset($requestParams['deleteReservation'])) {
+            return $this->deleteReservation($requestParams['deleteReservation']);
+        }
     }
 
     public function loadReservationDetails($requestParams)
@@ -74,6 +82,7 @@ class AdministrationViewController extends Controller
 
         $treatments = $treatmentController->index();
         $statusReservation = $statusReservationController->index();
+        $reservationDetails = $reservationController->show($requestParams['reservationID']);
         $customers = $customerController->showByReservation($requestParams['reservationID']);
         $rooms = $bookingController->showByReservation($requestParams['reservationID']);
 
@@ -81,10 +90,10 @@ class AdministrationViewController extends Controller
 
         if($user[0]['role'] == 1) {
             $reservations = $reservationController->index();
-            return view('pages.administration.dashboard', [ 'reservations' => $reservations, 'customers' => $customers, 'rooms' => $rooms, 'treatments' => $treatments, 'statusReservation' => $statusReservation ]);
+            return view('pages.administration.dashboard', [ 'reservations' => $reservations, 'reservationDetail' => $reservationDetails[0], 'customers' => $customers, 'rooms' => $rooms, 'treatments' => $treatments, 'statusReservation' => $statusReservation ]);
         } else {
             $reservations = $reservationController->indexNonAdmin($authController->getIDUser());
-            return view('pages.administration.dashboard', [ 'reservations' => $reservations, 'customers' => $customers, 'rooms' => $rooms, 'treatments' => $treatments, 'statusReservation' => $statusReservation ]);
+            return view('pages.administration.dashboard', [ 'reservations' => $reservations, 'reservationDetail' => $reservationDetails[0], 'customers' => $customers, 'rooms' => $rooms, 'treatments' => $treatments, 'statusReservation' => $statusReservation ]);
         }
     }
 
@@ -101,6 +110,22 @@ class AdministrationViewController extends Controller
 
         $reservationController = new ReservationController();
         $reservationController->store($requestParams);
+
+        return $this->showDashboard();
+    }
+
+    public function updateReservation($requestParams)
+    {
+        $reservationController = new ReservationController();
+        $reservationController->update($requestParams, $requestParams['updateReservation']);
+
+        return $this->showDashboard();
+    }
+
+    public function deleteReservation($requestParams)
+    {
+        $reservationController = new ReservationController();
+        $reservationController->destroy($requestParams);
 
         return $this->showDashboard();
     }

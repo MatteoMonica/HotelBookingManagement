@@ -47,8 +47,8 @@
                                             <td>{{$item->newbornnumber}}</td>
                                             <td>{{$item->notes}}</td>
                                             <td><button type="submit" name="reservationID" value="{{$item->idreservation}}" class="btn btn-success">Select</button></td>
-                                            <td><button type="submit" name="reservationID" value="{{$item->idreservation}}" class="btn btn-warning">Edit</button></td>
-                                            <td><button type="submit" name="reservationID" value="{{$item->idreservation}}" class="btn btn-danger">Delete</button></td>
+                                            <td><button type="button" onclick="$('#update_res_modal').modal('show');" class="btn btn-warning">Edit</button></td>
+                                            <td><button type="submit" name="deleteReservation" value="{{$item->idreservation}}" class="btn btn-danger">Delete</button></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -164,4 +164,5 @@
     @endif
 
     @include('pages.administration.modals.addreservation')
+    @include('pages.administration.modals.updatereservation')
 @stop

@@ -60,10 +60,10 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $Reservation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, int $id)
+    public function update($body, int $id)
     {
         $Reservation = Reservation::findOrFail($id);
-        $Reservation->update($request->all());
+        $Reservation->update($body);
 
         return $Reservation;
     }
