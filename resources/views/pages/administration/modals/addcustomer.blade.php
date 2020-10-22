@@ -51,24 +51,24 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="update_first_CF2">Codice fiscale</label>
-                            <input type="text" id="update_CF" name="customerfiscalcode" placeholder="Codice fiscale" class="form-control"/>
+                            <label for="update_first_CF2">Fiscal code</label>
+                            <input type="text" id="update_CF" name="customerfiscalcode" placeholder="Fiscal code" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_LNA2">Luogo nascita</label>
-                            <input type="text" id="update_LNA" name="customerbirthplace" placeholder="Luogo nascita" class="form-control"/>
+                            <label for="update_LNA2">Birth place</label>
+                            <input type="text" id="update_LNA" name="customerbirthplace" placeholder="Birth place" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_PNA2">Provincia nascita</label>
-                            <input type="text" id="update_PNA" name="customerbirthcity" placeholder="Provincia nascita" class="form-control"/>
+                            <label for="update_PNA2">County of birth</label>
+                            <input type="text" id="update_PNA" name="customerbirthcity" placeholder="County of birth" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_CNA2">Comune nascita</label>
-                            <input type="text" id="update_CNA" name="customerbirthprovince" placeholder="Comune nascita" class="form-control"/>
+                            <label for="update_CNA2">City of Birth</label>
+                            <input type="text" id="update_CNA" name="customerbirthprovince" placeholder="City of Birth" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_CTA2">Cittadinanza</label>
-                            <input type="text" id="update_CTA" name="customercitizenship" placeholder="Cittadinanza" class="form-control"/>
+                            <label for="update_CTA2">Citizenship</label>
+                            <input type="text" id="update_CTA" name="customercitizenship" placeholder="Citizenship" class="form-control"/>
                         </div>
                         <div class="form-group">
                             <label for="customergender">Document Type</label>
@@ -80,26 +80,26 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="update_DNM2">Numero documento</label>
-                            <input type="text" id="update_DNM" name="customerdocumentnumber" placeholder="Numero documento" class="form-control"/>
+                            <label for="update_DNM2">Document Number</label>
+                            <input type="text" id="update_DNM" name="customerdocumentnumber" placeholder="Document Number" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_LRD2">Luogo rilascio</label>
-                            <input type="text" id="update_LRD" name="customerdocumentplaceofissue" placeholder="Luogo rilascio" class="form-control"/>
+                            <label for="update_LRD2">Place of Issue</label>
+                            <input type="text" id="update_LRD" name="customerdocumentplaceofissue" placeholder="Place of Issue" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_CRD2">Comune rilascio</label>
-                            <input type="text" id="update_CRD" name="customerdocumentcityofissue" placeholder="Comune rilascio" class="form-control"/>
+                            <label for="update_CRD2">City of Issue</label>
+                            <input type="text" id="update_CRD" name="customerdocumentcityofissue" placeholder="City of Issue" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_PRD2">Provincia rilascio</label>
-                            <input type="text" id="update_PRD" name="customerdocumentprovinceofissue" placeholder="Luogo rilascio" class="form-control"/>
+                            <label for="update_PRD2">Province of issue</label>
+                            <input type="text" id="update_PRD" name="customerdocumentprovinceofissue" placeholder="Province of Issue" class="form-control"/>
                         </div>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancella</button>
-                        <button type="submit" class="btn btn-primary" name="addCustomer" value="{{$reservationDetail->idreservation}}" >Salva</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" name="addCustomer" value="{{$reservationDetail->idreservation}}" >Save</button>
                     </div>
                 </form>
             </div>

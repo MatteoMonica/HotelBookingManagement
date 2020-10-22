@@ -51,24 +51,24 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="update_customer_fiscalcode">Codice fiscale</label>
-                            <input type="text" id="update_customer_fiscalcode" name="customerfiscalcode" placeholder="Codice fiscale" class="form-control"/>
+                            <label for="update_customer_fiscalcode">Fiscal Code</label>
+                            <input type="text" id="update_customer_fiscalcode" name="customerfiscalcode" placeholder="Fiscal Code" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_customer_birthplace">Luogo nascita</label>
-                            <input type="text" id="update_customer_birthplace" name="customerbirthplace" placeholder="Luogo nascita" class="form-control"/>
+                            <label for="update_customer_birthplace">Birth place</label>
+                            <input type="text" id="update_customer_birthplace" name="customerbirthplace" placeholder="Birth place" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_customer_birthcity">Provincia nascita</label>
-                            <input type="text" id="update_customer_birthcity" name="customerbirthcity" placeholder="Provincia nascita" class="form-control"/>
+                            <label for="update_customer_birthcity">Province of Issue</label>
+                            <input type="text" id="update_customer_birthcity" name="customerbirthcity" placeholder="Province of Issue" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_customer_province">Comune nascita</label>
-                            <input type="text" id="update_customer_province" name="customerbirthprovince" placeholder="Comune nascita" class="form-control"/>
+                            <label for="update_customer_province">City of Issue</label>
+                            <input type="text" id="update_customer_province" name="customerbirthprovince" placeholder="City of Issue" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_customer_citizenship">Cittadinanza</label>
-                            <input type="text" id="update_customer_citizenship" name="customercitizenship" placeholder="Cittadinanza" class="form-control"/>
+                            <label for="update_customer_citizenship">Citizenship</label>
+                            <input type="text" id="update_customer_citizenship" name="customercitizenship" placeholder="Citizenship" class="form-control"/>
                         </div>
                         <div class="form-group">
                             <label for="update_customer_documenttype">Document Type</label>
@@ -80,26 +80,26 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="update_customer_documentnumber">Numero documento</label>
-                            <input type="text" id="update_customer_documentnumber" name="customerdocumentnumber" placeholder="Numero documento" class="form-control"/>
+                            <label for="update_customer_documentnumber">Document Number</label>
+                            <input type="text" id="update_customer_documentnumber" name="customerdocumentnumber" placeholder="Document Number" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_customer_placeofissue">Luogo rilascio</label>
-                            <input type="text" id="update_customer_placeofissue" name="customerdocumentplaceofissue" placeholder="Luogo rilascio" class="form-control"/>
+                            <label for="update_customer_placeofissue">Place of Issue</label>
+                            <input type="text" id="update_customer_placeofissue" name="customerdocumentplaceofissue" placeholder="Place of Issue" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_customer_cityofissue">Comune rilascio</label>
-                            <input type="text" id="update_customer_cityofissue" name="customerdocumentcityofissue" placeholder="Comune rilascio" class="form-control"/>
+                            <label for="update_customer_cityofissue">City of Issue</label>
+                            <input type="text" id="update_customer_cityofissue" name="customerdocumentcityofissue" placeholder="City of Issue" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_customer_provinceofissue">Provincia rilascio</label>
-                            <input type="text" id="update_customer_provinceofissue" name="customerdocumentprovinceofissue" placeholder="Luogo rilascio" class="form-control"/>
+                            <label for="update_customer_provinceofissue">Province of issue</label>
+                            <input type="text" id="update_customer_provinceofissue" name="customerdocumentprovinceofissue" placeholder="Province of issue" class="form-control"/>
                         </div>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancella</button>
-                        <button id="update_customer_submitform" type="submit" class="btn btn-primary" name="updateCustomer" >Salva</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button id="update_customer_submitform" type="submit" class="btn btn-primary" name="updateCustomer" >Save</button>
                     </div>
                 </form>
             </div>
