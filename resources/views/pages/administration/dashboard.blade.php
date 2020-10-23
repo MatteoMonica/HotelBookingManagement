@@ -130,7 +130,7 @@
 
                         <div style="padding-top: 50px;">
                             <div class = "float-right pull-right" style="padding-bottom: 30px">
-                                <button onclick="addResModal()" class="btn btn-info">Add Room</button>
+                                <button type="button" onclick="$('#add_room_modal').modal('show');" class="btn btn-info">Add Room</button>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered">
@@ -150,7 +150,7 @@
                                                 <td>{{$item->roomname}}</td>
                                                 <td>{{$item->roomcapacity}}</td>
                                                 <td>{{$item->roomcostpernight}}</td>
-                                                <td><button type="button" value="{{$item->idroom}}" class="btn btn-danger">Delete</button></td>
+                                                <td><button type="submit" name="deleteRoom" value="{{$item->idroom}}" class="btn btn-danger">Delete</button></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -169,5 +169,6 @@
         @include('pages.administration.modals.updatereservation')
         @include('pages.administration.modals.addcustomer')
         @include('pages.administration.modals.updatecustomer')
+        @include('pages.administration.modals.addroom')
     @endif
 @stop

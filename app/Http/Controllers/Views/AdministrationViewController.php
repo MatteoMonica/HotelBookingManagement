@@ -45,10 +45,10 @@ class AdministrationViewController extends Controller
 
         if($user[0]['role'] == 1) {
             $reservations = $reservationController->index();
-            return view('pages.administration.dashboard', [ 'reservations' => $reservations, 'treatments' => $treatments, 'statusReservation' => $statusReservation, 'rooms' => $rooms ]);
+            return view('pages.administration.dashboard', [ 'reservations' => $reservations, 'treatments' => $treatments, 'statusReservation' => $statusReservation, 'allrooms' => $rooms ]);
         } else {
             $reservations = $reservationController->indexNonAdmin($authController->getIDUser());
-            return view('pages.administration.dashboard', [ 'reservations' => $reservations, 'treatments' => $treatments, 'statusReservation' => $statusReservation, 'rooms' => $rooms ]);
+            return view('pages.administration.dashboard', [ 'reservations' => $reservations, 'treatments' => $treatments, 'statusReservation' => $statusReservation, 'allrooms' => $rooms ]);
         }
     }
 
@@ -83,6 +83,14 @@ class AdministrationViewController extends Controller
         if(isset($requestParams['deleteCustomer'])) {
             return $this->deleteCustomer($requestParams);
         }
+
+        if(isset($requestParams['addRoom'])) {
+            return $this->addRoom($requestParams);
+        }
+
+        if(isset($requestParams['deleteRoom'])) {
+            return $this->deleteRoom($requestParams);
+        }
     }
 
     public function loadReservationDetails($requestParams)
@@ -94,21 +102,23 @@ class AdministrationViewController extends Controller
         $authController = new AuthController();
         $treatmentController = new TreatmentController();
         $statusReservationController = new StatusReservationController();
+        $roomController = new RoomController();
 
         $treatments = $treatmentController->index();
         $statusReservation = $statusReservationController->index();
         $reservationDetails = $reservationController->show($requestParams['reservationID']);
         $customers = $customerController->showByReservation($requestParams['reservationID']);
         $rooms = $bookingController->showByReservation($requestParams['reservationID']);
+        $allrooms = $roomController->index();
 
         $user = $loginController->show($authController->getIDUser());
 
         if($user[0]['role'] == 1) {
             $reservations = $reservationController->index();
-            return view('pages.administration.dashboard', [ 'reservations' => $reservations, 'reservationDetail' => $reservationDetails[0], 'customers' => $customers, 'rooms' => $rooms, 'treatments' => $treatments, 'statusReservation' => $statusReservation ]);
+            return view('pages.administration.dashboard', [ 'reservations' => $reservations, 'reservationDetail' => $reservationDetails[0], 'customers' => $customers, 'allrooms' => $allrooms, 'rooms' => $rooms, 'treatments' => $treatments, 'statusReservation' => $statusReservation ]);
         } else {
             $reservations = $reservationController->indexNonAdmin($authController->getIDUser());
-            return view('pages.administration.dashboard', [ 'reservations' => $reservations, 'reservationDetail' => $reservationDetails[0], 'customers' => $customers, 'rooms' => $rooms, 'treatments' => $treatments, 'statusReservation' => $statusReservation ]);
+            return view('pages.administration.dashboard', [ 'reservations' => $reservations, 'reservationDetail' => $reservationDetails[0], 'customers' => $customers, 'allrooms' => $allrooms, 'rooms' => $rooms, 'treatments' => $treatments, 'statusReservation' => $statusReservation ]);
         }
     }
 
@@ -176,6 +186,25 @@ class AdministrationViewController extends Controller
         $customerController = new CustomerController();
 
         $customerController->destroy($requestParams['deleteCustomer']);
+
+        return $this->showDashboard();
+    }
+
+    public function addRoom($requestParams)
+    {
+        $bookingController = new BookingController();
+        $requestParams['reservation'] = $requestParams['addRoom'];
+
+        $bookingController->store($requestParams);
+
+        return $this->showDashboard();
+    }
+
+    public function deleteRoom($requestParams)
+    {
+        $bookingController = new BookingController();
+
+        $bookingController->destroy($requestParams['deleteRoom']);
 
         return $this->showDashboard();
     }
