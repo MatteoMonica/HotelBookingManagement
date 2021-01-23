@@ -24,7 +24,7 @@
 
                         <div class="form-group">
                             <label class="control-label" for="date">Check-in Date</label>
-                            <input class="form-control" id="date" name="checkin" placeholder="MM/DD/YYYY" type="text" required/>
+                            <input class="form-control" id="date" name="checkin" placeholder="YYYY-MM-DD" type="text" required/>
                             <script>
                                 $(document).ready(function(){
                                     var date_input = $('input[name="checkin"]');
@@ -41,7 +41,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="date">Check-out Date</label>
-                            <input class="form-control" id="date" name="checkout" placeholder="MM/DD/YYYY" type="text" required/>
+                            <input class="form-control" id="date" name="checkout" placeholder="YYYY-MM-DD" type="text" required/>
                             <script>
                                 $(document).ready(function(){
                                     var date_input = $('input[name="checkout"]');
@@ -100,12 +100,6 @@
                                 <option>3</option>
                                 <option>4</option>
                             </select>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="checked" name="createcustomerarea" id="createcustomerarea">
-                            <label class="form-check-label" for="createcustomerarea">
-                                Create Customer Area
-                            </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="checked" name="gdpr" id="gdpr" required>

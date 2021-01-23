@@ -114,21 +114,6 @@ class ReservationViewController extends Controller
         $roomsInfo = json_decode(session('chosenRooms'), true);
         $customersInfo = json_decode(session('customersReservation'), true);
 
-        /// Creation user login
-        if(isset($reservationInfo['createcustomerarea']) && $reservationInfo['createcustomerarea'] == "checked") {
-            $loginCount = $loginController->store([
-                'username' => $reservationInfo['emailAddress'],
-                'password' => bcrypt($userPassword),
-                'role' => 2
-            ]);
-
-            $reservationInfo['login'] = $loginCount->idlogin;
-
-            $arr = ['username' => $reservationInfo['emailAddress'], 'password' => $userPassword ];
-
-            session([ 'userDetailDashboard' => json_encode($arr) ]);
-        }
-
         /// Creation reservation
         $reservationNumber = $reservationController->store($reservationInfo);
 
@@ -152,13 +137,7 @@ class ReservationViewController extends Controller
 
     public function showCompletion()
     {
-        $sessionParams = json_decode(session('userDetailDashboard'), true);
-
         session()->flush();
-
-        if(isset($sessionParams['username']) && isset($sessionParams['password']))
-            return view('pages.reservations.completion', [ 'username' => $sessionParams['username'], 'password' => $sessionParams['password'] ]);
-        else
-            return view('pages.reservations.completion');
+        return view('pages.reservations.completion');
     }
 }

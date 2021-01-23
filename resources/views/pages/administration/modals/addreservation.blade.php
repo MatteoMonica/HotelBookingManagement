@@ -101,17 +101,6 @@
                                 <option>4</option>
                             </select>
                         </div>
-                        <div class="card">
-                            <div class="card-header">
-                                Dashboard access credentials
-                            </div>
-                            <div class="card-body">
-                                <label for="add_NA2">Username</label>
-                                <input type="text" name="username" id="add_usr" placeholder="Username" class="form-control"/>
-                                <label for="add_NA2">Password</label>
-                                <input type="password" name="password" id="add_pwd" placeholder="Password" class="form-control"/>
-                            </div>
-                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

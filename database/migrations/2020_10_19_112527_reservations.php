@@ -34,9 +34,6 @@ class Reservations extends Migration
 
             $table->text('notes')->nullable();
 
-            $table->unsignedBigInteger('login')->nullable();
-            $table->foreign('login')->references('idlogin')->on('login')->onDelete('cascade');
-
             $table->timestamps();
             $table->softDeletes('deleted_at', 0);
         });

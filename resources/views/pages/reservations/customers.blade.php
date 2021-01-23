@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="customerbirthdate">Birthdate</label>
-                            <input class="form-control" id="customerbirthdate" name="customerbirthdate" placeholder="DD/MM/YYYY" type="text" required/>
+                            <input class="form-control" id="customerbirthdate" name="customerbirthdate" placeholder="YYYY-MM-DD" type="text" required/>
                             <script>
                                 $(document).ready(function(){
                                     var date_input = $('input[name="customerbirthdate"]');
