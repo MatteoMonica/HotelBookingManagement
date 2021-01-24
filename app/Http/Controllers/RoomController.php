@@ -47,10 +47,8 @@ class RoomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($body)
     {
-        $body = $request->all();
-
         return Room::create($body);
     }
 
@@ -61,10 +59,10 @@ class RoomController extends Controller
      * @param  \App\Models\Room  $Room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, int $id)
+    public function update($body, int $id)
     {
         $Room = Room::findOrFail($id);
-        $Room->update($request->all());
+        $Room->update($body);
 
         return $Room;
     }

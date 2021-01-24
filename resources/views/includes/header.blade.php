@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="">
+    <a class="navbar-brand" href="/">
         <img src="https://img.icons8.com/carbon-copy/2x/domain.png" width="30" height="30" class="d-inline-block align-top" alt="">
         Bootstrap
     </a>

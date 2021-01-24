@@ -17,6 +17,8 @@ class LoginSeeder extends Seeder
     public function run()
     {
         DB::table('login')->insert([
+            'name' => 'Admin',
+            'surname' => 'Admin',
             'username' => 'admin@admin.it',
             'password' => '$2b$10$RSQOIN3PLGFkt2eC7TFYtejjN0SrvArm6nd/6frrlWiu8SpzNXbDG',
             'role' => 1

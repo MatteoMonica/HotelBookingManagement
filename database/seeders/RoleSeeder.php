@@ -21,7 +21,7 @@ class RoleSeeder extends Seeder
         ]);
 
         DB::table('roles')->insert([
-            'descriptionrole' => 'Customer'
+            'descriptionrole' => 'Viewer'
         ]);
     }
 }

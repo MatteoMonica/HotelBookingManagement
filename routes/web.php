@@ -31,12 +31,15 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('dashboard', 'Views\AdministrationViewController@showDashboard');
     Route::post('dashboard', 'Views\AdministrationViewController@processDashboard');
 
-    Route::post('reservation/add', 'Views\AdministrationViewController@addReservation');
     Route::get('customer', 'Views\AdministrationViewController@getCustomer');
+    Route::get('rooms', 'Views\ManageRoomsViewController@getRooms');
+    Route::get('users', 'Views\ManageUsersViewController@getUser');
+
+    Route::post('reservation/add', 'Views\AdministrationViewController@addReservation');
 
     Route::get('manageUsers', 'Views\ManageUsersViewController@showIndex');
-    Route::post('manageUsers', 'Views\ManageUsersViewController@processIndex');
+    Route::post('manageUsers', 'Views\ManageUsersViewController@processRequest');
 
     Route::get('manageRooms', 'Views\ManageRoomsViewController@showIndex');
-    Route::post('manageRooms', 'Views\ManageRoomsViewController@processIndex');
+    Route::post('manageRooms', 'Views\ManageRoomsViewController@processRequest');
 });

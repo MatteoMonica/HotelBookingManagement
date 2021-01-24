@@ -9,9 +9,12 @@
                     @csrf
 
                     <div>
-                        <div class = "float-right pull-right" style="padding-bottom: 30px">
-                            <button type="button" onclick="$('#add_res_modal').modal('show');" class="btn btn-info">Add Reservation</button>
-                        </div>
+                        @if (Auth::user()->role == 1)
+                            <div class = "float-right pull-right" style="padding-bottom: 30px">
+                                <button type="button" onclick="$('#add_res_modal').modal('show');" class="btn btn-info">Add Reservation</button>
+                            </div>
+                        @endif
+
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead class="thead-dark">
@@ -28,8 +31,10 @@
                                         <th scope="col">Number of babies</th>
                                         <th scope="col">Note</th>
                                         <th scope="col">Select</th>
-                                        <th scope="col">Edit</th>
-                                        <th scope="col">Delete</th>
+                                        @if (Auth::user()->role == 1)
+                                            <th scope="col">Edit</th>
+                                            <th scope="col">Delete</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,8 +52,10 @@
                                             <td>{{$item->newbornnumber}}</td>
                                             <td>{{$item->notes}}</td>
                                             <td><button type="submit" name="reservationID" value="{{$item->idreservation}}" class="btn btn-success">Select</button></td>
-                                            <td><button type="button" onclick="$('#update_res_modal').modal('show');" class="btn btn-warning">Edit</button></td>
-                                            <td><button type="submit" name="deleteReservation" value="{{$item->idreservation}}" class="btn btn-danger">Delete</button></td>
+                                            @if (Auth::user()->role == 1)
+                                                <td><button type="button" onclick="$('#update_res_modal').modal('show');" class="btn btn-warning">Edit</button></td>
+                                                <td><button type="submit" name="deleteReservation" value="{{$item->idreservation}}" class="btn btn-danger">Delete</button></td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -69,9 +76,12 @@
                         @csrf
 
                         <div>
-                            <div class = "float-right pull-right" style="padding-bottom: 30px">
-                                <button type="button" onclick="$('#add_customer_modal').modal('show');" class="btn btn-info">Add Customer</button>
-                            </div>
+                            @if (Auth::user()->role == 1)
+                                <div class = "float-right pull-right" style="padding-bottom: 30px">
+                                    <button type="button" onclick="$('#add_customer_modal').modal('show');" class="btn btn-info">Add Customer</button>
+                                </div>
+                            @endif
+
                             <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <thead class="thead-dark">
@@ -91,8 +101,10 @@
                                             <th>Place of issue</th>
                                             <th>Municipality of release</th>
                                             <th>Province of issue</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
+                                            @if (Auth::user()->role == 1)
+                                                <th>Edit</th>
+                                                <th>Delete</th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -113,8 +125,10 @@
                                                 <td>{{$item->customerdocumentplaceofissue}}</td>
                                                 <td>{{$item->customerdocumentcityofissue}}</td>
                                                 <td>{{$item->customerdocumentprovinceofissue}}</td>
-                                                <td><button type="button" onclick="updateCustomerLoadData({{$item->idcustomer}});" class="btn btn-warning">Edit</button></td>
-                                                <td><button type="submit" name="deleteCustomer" value="{{$item->idcustomer}}" class="btn btn-danger">Delete</button></td>
+                                                @if (Auth::user()->role == 1)
+                                                    <td><button type="button" onclick="updateCustomerLoadData({{$item->idcustomer}});" class="btn btn-warning">Edit</button></td>
+                                                    <td><button type="submit" name="deleteCustomer" value="{{$item->idcustomer}}" class="btn btn-danger">Delete</button></td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -129,9 +143,11 @@
                         @csrf
 
                         <div style="padding-top: 50px;">
-                            <div class = "float-right pull-right" style="padding-bottom: 30px">
-                                <button type="button" onclick="$('#add_room_modal').modal('show');" class="btn btn-info">Add Room</button>
-                            </div>
+                            @if (Auth::user()->role == 1)
+                                <div class = "float-right pull-right" style="padding-bottom: 30px">
+                                    <button type="button" onclick="$('#add_room_modal').modal('show');" class="btn btn-info">Add Room</button>
+                                </div>
+                            @endif
                             <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <thead class="thead-dark">
@@ -140,7 +156,9 @@
                                             <th>Name</th>
                                             <th>Type</th>
                                             <th>Price</th>
-                                            <th>Delete</th>
+                                            @if (Auth::user()->role == 1)
+                                                <th>Delete</th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -150,7 +168,9 @@
                                                 <td>{{$item->roomname}}</td>
                                                 <td>{{$item->roomcapacity}}</td>
                                                 <td>{{$item->roomcostpernight}}</td>
-                                                <td><button type="submit" name="deleteRoom" value="{{$item->idroom}}" class="btn btn-danger">Delete</button></td>
+                                                @if (Auth::user()->role == 1)
+                                                    <td><button type="submit" name="deleteRoom" value="{{$item->idroom}}" class="btn btn-danger">Delete</button></td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -165,7 +185,7 @@
 
     @include('pages.administration.modals.addreservation')
 
-    @if (isset($reservationDetail))
+    @if (isset($reservationDetail) && Auth::user()->role == 1)
         @include('pages.administration.modals.updatereservation')
         @include('pages.administration.modals.addcustomer')
         @include('pages.administration.modals.updatecustomer')

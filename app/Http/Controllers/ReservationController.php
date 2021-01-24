@@ -28,7 +28,7 @@ class ReservationController extends Controller
     {
         return Reservation::join('treatments', 'treatments.idtreatment', '=', 'reservations.treatment')
             ->join('statusreservation', 'statusreservation.idstatusreservation', '=', 'reservations.bookingstatus')
-            ->where([ 'login' => $idUser, 'reservations.deleted_at' => NULL ])->get();
+            ->where([ 'reservations.deleted_at' => NULL ])->get();
     }
 
     /**

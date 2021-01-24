@@ -14,6 +14,6 @@ class Reservation extends Model
 
     protected $fillable = [
         'descriptionbookingstatus','checkin','checkout','totalnights','contacts','treatment',
-        'bookingstatus','adultsnumber','kidsnumber','newbornnumber','editabledata','notes','login'
+        'bookingstatus','adultsnumber','kidsnumber','newbornnumber','editabledata','notes'
     ];
 }

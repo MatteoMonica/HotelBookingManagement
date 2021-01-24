@@ -46,10 +46,10 @@ class LoginController extends Controller
      * @param  \App\Models\User  $User
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, int $id)
+    public function update($body, int $id)
     {
         $User = Login::findOrFail($id);
-        $User->update($request->all());
+        $User->update($body);
 
         return $User;
     }

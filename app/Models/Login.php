@@ -14,7 +14,7 @@ class Login extends Authenticatable
     protected $primaryKey = 'idlogin';
 
     protected $fillable = [
-        'username', 'password', 'role'
+        'name', 'surname', 'username', 'password', 'role'
     ];
 
     protected $hidden = [

@@ -7,7 +7,6 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\TreatmentController;
 use App\Http\Controllers\RoomController;
-use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -99,12 +98,11 @@ class ReservationViewController extends Controller
         }
     }
 
-    public function insertReservation(string $userPassword)
+    public function insertReservation()
     {
         $reservationController = new ReservationController();
         $customerController = new CustomerController();
         $bookingController = new BookingController();
-        $loginController = new LoginController();
 
         $reservationInfo = session('generalReservationItems');
         $reservationInfo['bookingstatus'] = 1;
