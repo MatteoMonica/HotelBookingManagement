@@ -26,6 +26,11 @@ class AuthController extends Controller
         }
     }
 
+    public function logout()
+    {
+        return Auth::logout();
+    }
+
     public function getUser()
     {
         return Auth::user();

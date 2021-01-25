@@ -31,6 +31,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('dashboard', 'Views\AdministrationViewController@showDashboard');
     Route::post('dashboard', 'Views\AdministrationViewController@processDashboard');
 
+    Route::get('logout', 'Views\LogoutViewController@showIndex');
+
     Route::get('customer', 'Views\AdministrationViewController@getCustomer');
     Route::get('rooms', 'Views\ManageRoomsViewController@getRooms');
     Route::get('users', 'Views\ManageUsersViewController@getUser');

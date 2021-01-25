@@ -10,9 +10,15 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="/login">Login</a>
-            </li>
+            @if (Auth::check())
+                <li class="nav-item active">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            @else
+                <li class="nav-item active">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+            @endif
 
             @if (Auth::check())
                 <li class="nav-item">
