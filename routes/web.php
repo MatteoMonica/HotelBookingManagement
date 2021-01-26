@@ -24,7 +24,7 @@ Route::post('reservation/customers', 'Views\ReservationViewController@processCus
 
 Route::get('reservation/completion', 'Views\ReservationViewController@showCompletion');
 
-Route::get('login', 'Views\AdministrationViewController@showIndex');
+Route::get('login', 'Views\AdministrationViewController@showIndex')->name('login');
 Route::post('login', 'Views\AdministrationViewController@processIndex');
 
 Route::group(['middleware' => 'auth'], function() {
