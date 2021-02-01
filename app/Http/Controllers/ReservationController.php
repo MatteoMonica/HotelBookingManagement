@@ -20,18 +20,6 @@ class ReservationController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function indexNonAdmin($idUser)
-    {
-        return Reservation::join('treatments', 'treatments.idtreatment', '=', 'reservations.treatment')
-            ->join('statusreservation', 'statusreservation.idstatusreservation', '=', 'reservations.bookingstatus')
-            ->where([ 'reservations.deleted_at' => NULL ])->get();
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  \App\Aziende  $aziende
