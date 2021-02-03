@@ -9,7 +9,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="/dashboard" method="POST">
+                    <form id="addReservationForm" action="/dashboard" method="POST">
                         @csrf
 
                         <div class="form-group">
@@ -101,6 +101,10 @@
                                 <option>4</option>
                             </select>
                         </div>
+
+                        <div id="addReservationErrorDialog" class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
+                            <strong>ERROR!</strong> Check-in / Check-out dates are invalid. Try Again.
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -109,4 +113,26 @@
                 </form>
             </div>
         </div>
+
+        <script>
+            $("#addReservationForm").on("submit", function(){
+                var date1 = $("#add_chkin").val();
+                var date2 = $("#add_chkout").val();
+
+                date1 = new Date(date1);
+                date2 = new Date(date2);
+
+                date1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate());
+                date2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
+
+                var ms = date2 - date1;
+                var result = Math.floor(ms/1000/60/60/24);
+
+                if(result > 0)
+                    return true;
+
+                $("#addReservationErrorDialog").show();
+                return false;
+            });
+        </script>
     </div>

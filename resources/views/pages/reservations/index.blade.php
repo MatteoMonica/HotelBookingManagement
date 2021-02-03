@@ -19,12 +19,12 @@
             <div class="row">
                 <div class="col"></div>
                 <div class="col-6">
-                    <form method="POST" action="">
+                    <form id="form" method="POST" action="">
                         @csrf
 
                         <div class="form-group">
-                            <label class="control-label" for="date">Check-in Date</label>
-                            <input class="form-control" id="date" name="checkin" placeholder="YYYY-MM-DD" type="text" required/>
+                            <label class="control-label" for="checkindate">Check-in Date</label>
+                            <input class="form-control" id="checkindate" name="checkin" placeholder="YYYY-MM-DD" type="text" required/>
                             <script>
                                 $(document).ready(function(){
                                     var date_input = $('input[name="checkin"]');
@@ -40,8 +40,8 @@
                             </script>
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="date">Check-out Date</label>
-                            <input class="form-control" id="date" name="checkout" placeholder="YYYY-MM-DD" type="text" required/>
+                            <label class="control-label" for="checkoutdate">Check-out Date</label>
+                            <input class="form-control" id="checkoutdate" name="checkout" placeholder="YYYY-MM-DD" type="text" required/>
                             <script>
                                 $(document).ready(function(){
                                     var date_input = $('input[name="checkout"]');
@@ -108,6 +108,9 @@
                             </label>
                         </div>
                         <br><br>
+                        <div id="errorDialog" class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
+                            <strong>ERROR!</strong> Check-in / Check-out dates are invalid. Try Again.
+                        </div>
                         <div class="text-right">
                             <button type="submit" class="btn btn-success mb-2 ">Next</button>
                         </div>
@@ -117,4 +120,26 @@
             </div>
         </div>
     </section>
+
+    <script>
+        $("#form").on("submit", function(){
+            var date1 = $("#checkindate").val();
+            var date2 = $("#checkoutdate").val();
+
+            date1 = new Date(date1);
+            date2 = new Date(date2);
+
+            date1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate());
+            date2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
+
+            var ms = date2 - date1;
+            var result = Math.floor(ms/1000/60/60/24);
+
+            if(result > 0)
+                return true;
+
+            $("#errorDialog").show();
+            return false;
+        });
+    </script>
 @stop

@@ -24,7 +24,6 @@
                                         <th scope="col">Check-out</th>
                                         <th scope="col">Treatment</th>
                                         <th scope="col">Status</th>
-                                        <th scope="col">Editable data</th>
                                         <th scope="col">Contact details</th>
                                         <th scope="col">Number of adults</th>
                                         <th scope="col">Number of children</th>
@@ -45,7 +44,6 @@
                                             <td>{{$item->checkout}}</td>
                                             <td>{{$item->descriptiontreatment}}</td>
                                             <td>{{$item->descriptionbookingstatus}}</td>
-                                            <td>{{$item->editabledata}}</td>
                                             <td>{{$item->contacts}}</td>
                                             <td>{{$item->adultsnumber}}</td>
                                             <td>{{$item->kidsnumber}}</td>
@@ -92,9 +90,9 @@
                                             <th>Gender</th>
                                             <th>Date of birth</th>
                                             <th>Fiscal Code</th>
-                                            <th>Birth place</th>
-                                            <th>Birthplace</th>
-                                            <th>County of birth</th>
+                                            <th>Country of Birth</th>
+                                            <th>Birth City</th>
+                                            <th>Birth Province</th>
                                             <th>Citizenship</th>
                                             <th>Document type</th>
                                             <th>Document number</th>
@@ -169,7 +167,7 @@
                                                 <td>{{$item->roomcapacity}}</td>
                                                 <td>{{$item->roomcostpernight}}</td>
                                                 @if (Auth::user()->role == 1)
-                                                    <td><button type="submit" name="deleteRoom" value="{{$item->idroom}}" class="btn btn-danger">Delete</button></td>
+                                                    <td><button type="submit" name="deleteRoom" value="{{$reservationDetail["idreservation"]}}.{{$item->idroom}}" class="btn btn-danger">Delete</button></td>
                                                 @endif
                                             </tr>
                                         @endforeach

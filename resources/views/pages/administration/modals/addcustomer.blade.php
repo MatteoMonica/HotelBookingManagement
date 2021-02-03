@@ -55,16 +55,16 @@
                             <input type="text" id="update_CF" name="customerfiscalcode" placeholder="Fiscal code" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_LNA2">Birth place</label>
-                            <input type="text" id="update_LNA" name="customerbirthplace" placeholder="Birth place" class="form-control"/>
+                            <label for="update_LNA2">Country of Birth</label>
+                            <input type="text" id="update_LNA" name="customerbirthplace" placeholder="Country of Birth" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_PNA2">County of birth</label>
-                            <input type="text" id="update_PNA" name="customerbirthcity" placeholder="County of birth" class="form-control"/>
+                            <label for="update_PNA2">Birth City</label>
+                            <input type="text" id="update_PNA" name="customerbirthcity" placeholder="Birth City" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_CNA2">City of Birth</label>
-                            <input type="text" id="update_CNA" name="customerbirthprovince" placeholder="City of Birth" class="form-control"/>
+                            <label for="update_CNA2">Birth Province</label>
+                            <input type="text" id="update_CNA" name="customerbirthprovince" placeholder="Birth Province" class="form-control"/>
                         </div>
                         <div class="form-group">
                             <label for="update_CTA2">Citizenship</label>

@@ -9,13 +9,13 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="POST" action="/dashboard">
+                <form id="updateReservationForm" method="POST" action="/dashboard">
                     @csrf
 
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="add_chkin2">Check-in</label>
-                            <input class="form-control" onkeypress="return false;" value="{{$reservationDetail['checkin']}}" id="add_chkin" name="checkin" placeholder="Check-in" type="text" required/>
+                            <label for="update_chkin">Check-in</label>
+                            <input class="form-control" onkeypress="return false;" value="{{$reservationDetail['checkin']}}" id="update_chkin" name="checkin" placeholder="Check-in" type="text" required/>
                             <script>
                                 $(document).ready(function(){
                                     var date_input=$('input[name="checkin"]'); //our date input has the name "date"
@@ -32,8 +32,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="add_chkout2">Check-out</label>
-                            <input class="form-control" id="add_chkout" onkeypress="return false;" value="{{$reservationDetail['checkout']}}" name="checkout" placeholder="Check-out" type="text" required/>
+                            <label for="update_chkout">Check-out</label>
+                            <input class="form-control" id="update_chkout" onkeypress="return false;" value="{{$reservationDetail['checkout']}}" name="checkout" placeholder="Check-out" type="text" required/>
                             <script>
                                 $(document).ready(function(){
                                     var date_input=$('input[name="checkout"]'); //our date input has the name "date"
@@ -116,6 +116,10 @@
                                 @endfor
                             </select>
                         </div>
+
+                        <div id="updateReservationErrorDialog" class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
+                            <strong>ERROR!</strong> Check-in / Check-out dates are invalid. Try Again.
+                        </div>
                     </div>
 
                     <div class="modal-footer">
@@ -125,5 +129,27 @@
                 </form>
             </div>
         </div>
+
+        <script>
+            $("#updateReservationForm").on("submit", function(){
+                var date1 = $("#update_chkin").val();
+                var date2 = $("#update_chkout").val();
+
+                date1 = new Date(date1);
+                date2 = new Date(date2);
+
+                date1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate());
+                date2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
+
+                var ms = date2 - date1;
+                var result = Math.floor(ms/1000/60/60/24);
+
+                if(result > 0)
+                    return true;
+
+                $("#updateReservationErrorDialog").show();
+                return false;
+            });
+        </script>
     </div>
 @endif

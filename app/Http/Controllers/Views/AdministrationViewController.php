@@ -177,7 +177,15 @@ class AdministrationViewController extends Controller
     {
         $bookingController = new BookingController();
 
-        $bookingController->destroy($requestParams['deleteRoom']);
+        $details = explode(".", $requestParams['deleteRoom']);
+
+        $bookings = $bookingController->showByReservation($details[0]);
+
+        for ($i=0; $i < count($bookings); $i++) {
+            var_dump($bookings[$i]["room"]);
+            if($bookings[$i]["room"] == $details[1])
+                $bookingController->destroy($bookings[$i]["idbooking"]);
+        }
 
         return $this->showDashboard();
     }

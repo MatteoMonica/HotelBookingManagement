@@ -17,25 +17,25 @@ class RoomSeeder extends Seeder
     public function run()
     {
         DB::table('rooms')->insert([
-            'roomname' => 'Nome1',
+            'roomname' => 'Camera 1',
             'roomcapacity' => 1,
             'roomcostpernight' => 10.50
         ]);
 
         DB::table('rooms')->insert([
-            'roomname' => 'Nome2',
+            'roomname' => 'Camera 2',
             'roomcapacity' => 2,
             'roomcostpernight' => 20.50
         ]);
 
         DB::table('rooms')->insert([
-            'roomname' => 'Nome3',
+            'roomname' => 'Camera 3',
             'roomcapacity' => 3,
             'roomcostpernight' => 30.50
         ]);
 
         DB::table('rooms')->insert([
-            'roomname' => 'Nome4',
+            'roomname' => 'Camera 4',
             'roomcapacity' => 4,
             'roomcostpernight' => 40.50
         ]);

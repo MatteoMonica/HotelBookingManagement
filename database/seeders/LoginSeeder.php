@@ -19,9 +19,17 @@ class LoginSeeder extends Seeder
         DB::table('login')->insert([
             'name' => 'Admin',
             'surname' => 'Admin',
-            'username' => 'admin@admin.it',
-            'password' => '$2b$10$RSQOIN3PLGFkt2eC7TFYtejjN0SrvArm6nd/6frrlWiu8SpzNXbDG',
+            'username' => 'admin@example.com',
+            'password' => '$2b$10$X3RWvxNjTlpQF.QtWOe3ve1HRY8s0PNci3vaTt.KD7t70NECzjsLW',
             'role' => 1
+        ]);
+
+        DB::table('login')->insert([
+            'name' => 'User',
+            'surname' => 'User',
+            'username' => 'user@example.com',
+            'password' => '$2b$10$X3RWvxNjTlpQF.QtWOe3ve1HRY8s0PNci3vaTt.KD7t70NECzjsLW',
+            'role' => 2
         ]);
     }
 }

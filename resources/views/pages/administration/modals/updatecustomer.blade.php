@@ -55,16 +55,16 @@
                             <input type="text" id="update_customer_fiscalcode" name="customerfiscalcode" placeholder="Fiscal Code" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_customer_birthplace">Birth place</label>
-                            <input type="text" id="update_customer_birthplace" name="customerbirthplace" placeholder="Birth place" class="form-control"/>
+                            <label for="update_customer_birthplace">Country of Birth</label>
+                            <input type="text" id="update_customer_birthplace" name="customerbirthplace" placeholder="Country of Birth" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_customer_birthcity">Province of Issue</label>
-                            <input type="text" id="update_customer_birthcity" name="customerbirthcity" placeholder="Province of Issue" class="form-control"/>
+                            <label for="update_customer_birthcity">Birth City</label>
+                            <input type="text" id="update_customer_birthcity" name="customerbirthcity" placeholder="Birth City" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="update_customer_province">City of Issue</label>
-                            <input type="text" id="update_customer_province" name="customerbirthprovince" placeholder="City of Issue" class="form-control"/>
+                            <label for="update_customer_province">Birth Province</label>
+                            <input type="text" id="update_customer_province" name="customerbirthprovince" placeholder="Birth Province" class="form-control"/>
                         </div>
                         <div class="form-group">
                             <label for="update_customer_citizenship">Citizenship</label>
